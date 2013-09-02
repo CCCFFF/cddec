@@ -1,4 +1,6 @@
 Cddec::Application.routes.draw do
+  resources :comments
+
   resources :homes
 
   resources :pictures
