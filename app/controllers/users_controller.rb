@@ -1,5 +1,12 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :current_user_must_be_user, :only => [:edit, :update, :destroy]
+
+  def current_user_must_be_user
+    if current_user != @user
+      redirect_to users_url, :notice => "You are not authorized"
+    end
+  end
 
   # GET /users
   # GET /users.json
