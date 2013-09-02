@@ -1,4 +1,12 @@
 Cddec::Application.routes.draw do
+
+
+
+  #Routes for sign in / sign out
+  get '/sessions/new' => 'sessions#new', as: "new_session"
+  post '/sessions' => 'sessions#create', as: 'sessions'
+  delete '/sessions' => 'sessions#destroy', as: 'session'
+
   resources :comments
 
   resources :homes
@@ -49,7 +57,7 @@ Cddec::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
