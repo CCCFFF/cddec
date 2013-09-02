@@ -1,4 +1,6 @@
 Cddec::Application.routes.draw do
+  resources :homes
+
   resources :pictures
 
   resources :rooms
