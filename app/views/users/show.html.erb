@@ -7,20 +7,8 @@
     <ul>
       <% @user.homes.each do |home| %>
           <li>
-            <%= home.name %><%= home.location%>
+            <%= home.name %><%= home.location%><%= link_to "View Home", home_url(home.id), :class => "btn" %>
 
-              <% home.rooms.each do |room| %>
-                <%= room.category %>
-
-                  <% room.pictures.each do |pic| %>
-                   <%= image_tag pic.source %>
-
-                     <%= room.comments.each do |comment| %>
-                      <%= comment.text %>
-
-                     <% end %>
-                  <% end %>
-              <% end %>
           </li>
       <% end %>
   </ul>

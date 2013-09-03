@@ -12,8 +12,26 @@
 
 <p>
   <strong>Home:</strong>
-  <%= @room.home_id %>
+  <% @home = Home.find(@room.home_id) %>
+  <%= @home.name %>
 </p>
 
 <%= link_to 'Edit', edit_room_path(@room) %> |
 <%= link_to 'Back', rooms_path %>
+<p>
+  <h3>Pictures to <%= "#{@room.category}" %></h3>
+  <ul>
+  <% @room.pictures.each do |pic| %>
+    <li>
+      <%= image_tag pic.source %>
+        <% pic.comments.each do |comment| %>
+        <ul>
+          <li>
+            <%= comment.text %>
+          </li>
+          <% end %>
+        </ul>
+    </li>
+  <% end %>
+</ul>
+</p>
