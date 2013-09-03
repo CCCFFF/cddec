@@ -27,11 +27,16 @@
         <%= link_to "CrowdDecor", root_url, :class => "brand" %>
       <div class="nav-collapse">
         <ul class="nav">
-
+          <% if current_user.present? %>
+          <li><%= link_to "#{current_user.email}", user_url(current_user.id) %></li>
+          <% else %>
+          <li><%= link_to "Sign In", new_session_url %></li>
+          <% end %>
           <li><%= link_to "Homes", homes_url %></li>
           <li><%= link_to "Rooms", rooms_url %></li>
           <li><%= link_to "Pictures", pictures_url %></li>
           <li><%= link_to "Comments", comments_url %></li>
+          <li><%= link_to "Sign Out", sessions_url, method: 'delete' %></li>
 
           <%= form_tag homes_url, method: 'get', class: 'navbar-search pull-left' do %>
             <%= text_field_tag :search_term, "", class: 'search-query', placeholder: 'Search by Home..' %>
@@ -42,14 +47,6 @@
     </div>
   </div>
 <div class="container">
-    <p>
-      <% if current_user.present? %>
-        Signed in as <%= current_user.email %>.
-        <%= link_to "Sign Out", session_url, :method => 'delete' %>
-      <% else %>
-        <%= link_to "Sign in to vote", new_session_url %>
-      <% end %>
-    </p>
    <% flash.each do |name, msg| %>
       <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
         <a class="close" data-dismiss="alert">&times;</a>

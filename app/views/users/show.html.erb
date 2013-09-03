@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 <div>
+  <%= link_to "Edit Profile", edit_user_url(current_user.id), :class => 'btn btn-primary' %>
   <%= link_to "Add New Home", new_home_url, :class => "btn btn-primary" %>
 </div>
 <div>
