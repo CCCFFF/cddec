@@ -15,7 +15,7 @@
 
 <p>
   <h3>Rooms to <%= "#{@home.name}" %></h3>
-  <ul>
+  <ul style="list-style: none;">
   <% @home.rooms.each do |room| %>
     <li>
       <%= room.category %><%= link_to "View Room", room_url(room.id), :class => "btn" %>

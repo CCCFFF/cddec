@@ -4,7 +4,7 @@
   <%= link_to "Add New Home", new_home_url, :class => "btn btn-primary" %>
 </div>
 <div>
-    <ul>
+    <ul style="list-style: none;">
       <% @user.homes.each do |home| %>
           <li>
             <%= home.name %><%= home.location%><%= link_to "View Home", home_url(home.id), :class => "btn" %>
